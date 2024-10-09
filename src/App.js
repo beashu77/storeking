@@ -1,12 +1,20 @@
-import './App.css';
-import ProductForm from './Components/ProductForm';
-import ProductList from './Components/ProductList';
+import "./App.css";
+import ProductListDashboard from "./Components/ProductListDashboard";
 
 function App() {
   return (
-    <div className="App">
-     {/* <ProductForm/> */}
-     <ProductList/>
+    <div
+      className="App d-flex justify-content-center"
+      style={{
+        minHeight:'100vh',
+        backgroundImage: `url('https://wallpapercave.com/wp/wp2593229.jpg')`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="container-lg mt-2 rounded" >
+        <ProductListDashboard />
+      </div>
     </div>
   );
 }
