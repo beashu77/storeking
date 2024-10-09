@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Product = ({ data, products, setProducts }) => {
+const Product = ({ data, i, products, setProducts }) => {
   const {
     register,
     handleSubmit,
@@ -13,7 +13,7 @@ const Product = ({ data, products, setProducts }) => {
   const handleEditClick = () => {
     reset({
       name: data.name,
-      sku: data.skucode,
+      skucode: data.skucode,
       price: data.price,
       mrp: data.mrp,
     });
@@ -25,7 +25,7 @@ const Product = ({ data, products, setProducts }) => {
         ? {
             ...product,
             name: updatedData.name,
-            skucode: updatedData.sku,
+            skucode: updatedData.skucode,
             price: updatedData.price,
             mrp: updatedData.mrp,
           }
@@ -36,6 +36,7 @@ const Product = ({ data, products, setProducts }) => {
     setProducts(updatedProducts);
     alert("Product updated successfully!");
   };
+
   const handleDelete = () => {
     const filteredProducts = products.filter(
       (product) => product.id !== data.id
@@ -46,66 +47,45 @@ const Product = ({ data, products, setProducts }) => {
   };
 
   return (
-    <div
-      className="card col-lg-4 col-md-6 col-sm-12 mb-3 mx-3"
-      style={{ width: "250px" }}
-    >
-      <img
-        src="https://mmi-global.com/wp-content/uploads/2020/05/default-product-image.jpg"
-        className="card-img-top"
-        style={{ height: "150px", width: "200px", margin: "auto" }}
-        alt="product_image"
-      />
-      <div className="card-body">
-        <h3 className="card-title mb-1" style={{ lineHeight: "1px" }}>
-          {data.name}
-        </h3>
-        <br />
-        <hr />
-        <p
-          className="card-text text-body-secondary text-start"
-          style={{ lineHeight: "1px", fontSize: "12px" }}
-        >
-          Shipped in 7-8 days
-        </p>
-        <p
-          className="card-text text-body-secondary text-start"
-          style={{ lineHeight: "1px", fontSize: "12px" }}
-        >
-          ₹ {data.mrp}
-        </p>
-        <div className="d-flex justify-content-between">
+    <>
+      <tr>
+        <td className="p-2">{data.name}</td>
+        <td className="p-2">{data.skucode}</td>
+        <td className="p-2">₹ {data.price}</td>
+        <td className="p-2">₹ {data.mrp}</td>
+        <td className="p-2">
           <button
             type="button"
             className="btn btn-outline-primary"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target={`#editModal-${data.id}`}
             onClick={handleEditClick}
           >
             Edit
           </button>
+        </td>
+        <td className="p-2">
           <button
-            href="#"
             className="btn btn-outline-danger"
             onClick={handleDelete}
           >
             Delete
           </button>
-        </div>
-      </div>
+        </td>
+      </tr>
 
-      {/* -------------------------------------------------------------------- */}
+      {/* Modal Component */}
       <div
         className="modal fade"
-        id="exampleModal"
+        id={`editModal-${data.id}`}
         tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
+        aria-labelledby={`editModalLabel-${data.id}`}
         aria-hidden="true"
       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title" id={`editModalLabel-${data.id}`}>
                 Edit Product
               </h5>
               <button
@@ -120,9 +100,10 @@ const Product = ({ data, products, setProducts }) => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="p-3 border border-secondary rounded"
               >
-                <div className="mb-3">
-                  <label className="form-label text-start d-block">Name</label>
-                  <input
+                <div className="mb-3 text-start fw-semibold d-flex ">
+                  <label className="form-label w-50" >Name</label>
+                  <input 
+                    style={{backgroundColor:'lightgray'}}
                     type="text"
                     className={`form-control ${
                       errors.name ? "is-invalid" : ""
@@ -134,14 +115,15 @@ const Product = ({ data, products, setProducts }) => {
                   )}
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label text-start d-block">
-                    SKU Code
-                  </label>
-                  <input
+                <div className="mb-3 text-start fw-semibold d-flex ">
+                  <label className="form-label w-50" >SKU Code</label>
+                  <input 
+                    style={{backgroundColor:'lightgray'}}
                     type="text"
-                    className={`form-control ${errors.sku ? "is-invalid" : ""}`}
-                    {...register("sku", {
+                    className={`form-control ${
+                      errors.sku ? "is-invalid" : ""
+                    }`}
+                    {...register("skucode", {
                       required: true,
                       pattern: /^[a-zA-Z0-9]+$/,
                     })}
@@ -153,9 +135,10 @@ const Product = ({ data, products, setProducts }) => {
                   )}
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label text-start d-block">Price</label>
-                  <input
+                <div className="mb-3 text-start fw-semibold d-flex ">
+                  <label className="form-label w-50" >Price</label>
+                  <input 
+                    style={{backgroundColor:'lightgray'}}
                     type="number"
                     className={`form-control ${
                       errors.price ? "is-invalid" : ""
@@ -172,11 +155,14 @@ const Product = ({ data, products, setProducts }) => {
                   )}
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label text-start d-block">MRP</label>
-                  <input
+                <div className="mb-3 text-start fw-semibold d-flex ">
+                  <label className="form-label w-50" >MRP</label>
+                  <input 
+                    style={{backgroundColor:'lightgray'}}
                     type="number"
-                    className={`form-control ${errors.mrp ? "is-invalid" : ""}`}
+                    className={`form-control ${
+                      errors.mrp ? "is-invalid" : ""
+                    }`}
                     {...register("mrp", {
                       required: "MRP is required",
                       valueAsNumber: true,
@@ -188,13 +174,6 @@ const Product = ({ data, products, setProducts }) => {
                 </div>
 
                 <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
                   <button type="submit" className="btn btn-primary">
                     Submit
                   </button>
@@ -204,7 +183,7 @@ const Product = ({ data, products, setProducts }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
