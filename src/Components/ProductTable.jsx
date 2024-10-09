@@ -3,7 +3,7 @@ import Product from './Product';
 
 const ProductTable = ({ products, setProducts }) => {
   return (
-    <table className="table table-info table-striped w-100 rounded ">
+    <table className="table table-info table-striped rounded ">
       <thead>
         <tr>
           <th>Name</th>
