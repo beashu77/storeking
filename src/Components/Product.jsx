@@ -42,8 +42,8 @@ const Product = ({ data, products, setProducts }) => {
       <tr >
         <td className="table-responsive-text ">{data.name}</td>
         <td className="table-responsive-text ">{data.skucode}</td>
-        <td className="table-responsive-text ">₹ {data.price}</td>
-        <td className="table-responsive-text ">₹ {data.mrp}</td>
+        <td className="table-responsive-text ">{data.price}</td>
+        <td className="table-responsive-text ">{data.mrp}</td>
         <td className="table-responsive-text ">
           <button
             type="button"
