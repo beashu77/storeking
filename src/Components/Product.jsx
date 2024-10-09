@@ -40,7 +40,7 @@ const Product = ({ data, products, setProducts }) => {
   return (
     <>
       <tr >
-        <td className="table-responsive-text text-centre ">{data.name}</td>
+        <td className="table-responsive-text ">{data.name}</td>
         <td className="table-responsive-text ">{data.skucode}</td>
         <td className="table-responsive-text ">₹ {data.price}</td>
         <td className="table-responsive-text ">₹ {data.mrp}</td>
