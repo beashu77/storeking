@@ -32,13 +32,14 @@ const Modal = ({
           <div className="modal-body">
             <form
               onSubmit={onSubmit}
-              className="p-3 border border-secondary rounded"
+              className="p-3 shadow-lg rounded bg-primary-subtle"
             >
-              <div className="mb-3">
-                <label className="form-label">Name</label>
+              <div className="mb-3 d-flex">
+                <label className="form-label text-start w-50 fw-semibold">Name</label>
                 <input
                   type="text"
-                  className={`form-control ${errors.name ? "is-invalid" : ""}`}
+                  className={`form-control border-dark shadow-sm ${errors.name ? "is-invalid" : ""}`}
+                  style={{ backgroundColor: "#f8f9fa" }} 
                   defaultValue={defaultValues.name}
                   {...register("name", { required: true })}
                 />
@@ -47,13 +48,12 @@ const Modal = ({
                 )}
               </div>
 
-              <div className="mb-3">
-                <label className="form-label">SKU Code</label>
+              <div className="mb-3 d-flex">
+                <label className="form-label text-start w-50 fw-semibold">SKU Code</label>
                 <input
                   type="text"
-                  className={`form-control ${
-                    errors.skucode ? "is-invalid" : ""
-                  }`}
+                  className={`form-control border-dark shadow-sm ${errors.skucode ? "is-invalid" : ""}`}
+                  style={{ backgroundColor: "#f8f9fa" }} 
                   defaultValue={defaultValues.skucode}
                   {...register("skucode", {
                     required: true,
@@ -67,11 +67,12 @@ const Modal = ({
                 )}
               </div>
 
-              <div className="mb-3">
-                <label className="form-label">Price</label>
+              <div className="mb-3 d-flex">
+                <label className="form-label text-start w-50 fw-semibold">Price</label>
                 <input
                   type="number"
-                  className={`form-control ${errors.price ? "is-invalid" : ""}`}
+                  className={`form-control border-dark shadow-sm ${errors.price ? "is-invalid" : ""}`}
+                  style={{ backgroundColor: "#f8f9fa" }} 
                   defaultValue={defaultValues.price}
                   {...register("price", {
                     required: "Price is required",
@@ -83,11 +84,12 @@ const Modal = ({
                 )}
               </div>
 
-              <div className="mb-3">
-                <label className="form-label">MRP</label>
+              <div className="mb-3 d-flex">
+                <label className="form-label text-start w-50 fw-semibold">MRP</label>
                 <input
                   type="number"
-                  className={`form-control ${errors.mrp ? "is-invalid" : ""}`}
+                  className={`form-control border-dark shadow-sm ${errors.mrp ? "is-invalid" : ""}`}
+                  style={{ backgroundColor: "#f8f9fa" }} 
                   defaultValue={defaultValues.mrp}
                   {...register("mrp", {
                     required: "MRP is required",

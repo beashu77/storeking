@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.custom-input {
+  border: 2px solid #343a40; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+}
+
+.custom-input:focus {
+  border-color: #495057;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+}
+

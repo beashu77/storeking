@@ -12,7 +12,7 @@ function App() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container-lg mt-2 rounded" >
+      <div className="container-lg mt-5 rounded" >
         <ProductListDashboard />
       </div>
     </div>
